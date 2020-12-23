@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import ItemContainer from './components/ItemsContainer'
 
 function App() {
