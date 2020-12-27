@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import {NewItemModal} from './components/newItemModal';
 import ItemContainer from './components/ItemsContainer';
 import Item from './components/item';
