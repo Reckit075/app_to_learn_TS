@@ -1,3 +1,4 @@
+import classes from '*.module.css';
 import React, {useState} from 'react';
 import {useModal} from './useModal';
 
