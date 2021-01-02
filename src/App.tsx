@@ -1,8 +1,5 @@
 import React from 'react';
-<<<<<<< HEAD:src/App.tsx
-=======
-import './index.scss'
->>>>>>> StylingWebsite:app_collection/src/App.tsx
+import './index.scss';
 import {NewItemModal} from './components/newItemModal';
 import ItemContainer from './components/ItemsContainer';
 import Item from './components/item';
