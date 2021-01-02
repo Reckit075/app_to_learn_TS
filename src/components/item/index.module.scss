@@ -1,0 +1,39 @@
+.itemContainer{
+    width:50%;
+    height:200px;
+    margin: 0 auto;
+    padding:2em;
+    box-shadow: 2px 2px 6px 0px grey;
+    display:grid;
+    grid-template-rows: minmax(2em, 1fr) minmax(4em, 4fr) 2em;
+    row-gap: 1em;
+    border-radius: 15px;
+
+    .itemHeader{
+        font-size:2em;
+        font-weight: normal;
+        
+        .title{
+            padding-right: .4em;
+            margin-right:.4em;
+            border-right:1px solid black;
+        }
+    }
+
+    .description{
+        display:block;
+        padding:2em;
+        text-align: center;
+    }
+
+    .delete{
+        padding:2px;
+        margin:0 auto 0 95%;
+        cursor:pointer;
+        transition: transform .5s ease-in;
+
+        &:hover{
+            transform: scale(1.3, 1.3);
+        }
+    }
+}

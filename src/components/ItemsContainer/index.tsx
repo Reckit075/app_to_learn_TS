@@ -1,5 +1,5 @@
-import React, {FC} from 'react'
-import './index.css'
+import React, {FC} from 'react';
+import './index.scss';
 
 const ItemsContainer:FC = () =>{
     return(
