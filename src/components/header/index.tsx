@@ -6,7 +6,7 @@ const Header:FC = () =>{
   
   return(
       <div className={styles.header}>
-        <img src={Logo} alt=""/>
+        <img src={Logo} alt="" className={styles.logoImage}/>
       </div>
   )
 }
