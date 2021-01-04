@@ -1,4 +1,4 @@
-.ItemsContainer{
+.itemsContainer{
     width: 70vw;
     height: 30vh;
     background-color: #D1BA7E;
@@ -8,9 +8,11 @@
     justify-content:space-around;
     align-items: center;
 }
-.testItems{
-    width: 150px;
-    height: 20vh;
-    background-color: #9b803d;
-    border: 1px solid black;
+.title{
+    font-size: larger;
+    font-family: Raleway;
+    span{
+        font-weight: bolder;
+        color: #6B5CA5;
+    }
 }

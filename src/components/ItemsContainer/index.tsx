@@ -1,13 +1,19 @@
 import React, {FC} from 'react';
-import './index.scss';
+import styles from './index.module.scss';
+import Item from '../item/'
+import Button from '../button/'
 
-const ItemsContainer:FC = () =>{
+interface IItemsContainerType{
+    collectionTitle:string
+}
+
+const ItemsContainer:FC<IItemsContainerType> = ({collectionTitle}) =>{
     return(
-        <div className='ItemsContainer'>
-            <div className='testItems'></div>
-            <div className='testItems'></div>
-            <div className='testItems'></div>
-            <div className='testItems'></div>
+        <div>
+            <h1 className={styles.title}>Kolekcja:<span>{collectionTitle}</span></h1>
+            <Item title='Królestwo' author='Jo Nasebo' description='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tristique justo, vel commodo lorem interdum. Tortor dui eu laoreet tortor in pretium.'/>
+            <Item title='Królestwo' author='Jo Nasebo' description='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tristique justo, vel commodo lorem interdum. Tortor dui eu laoreet tortor in pretium.'/>
+            <Button text={'add new Item'} />
         </div>
     );
 }

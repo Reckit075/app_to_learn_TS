@@ -1,0 +1,14 @@
+.btn{
+    background-color: #6B5CA5;
+    border: 4px solid #6B5CA5;
+    height: 5vh;
+    width: 10vw;
+    float: right;
+    color: white;
+    border-radius: 12px;
+    &:hover{
+        background-color: white;
+        cursor: pointer;
+        color: #6B5CA5;
+    }
+}
