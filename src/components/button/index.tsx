@@ -1,14 +1,17 @@
-import React, {FC} from 'react';
+import React, { FC } from 'react';
 import styles from './index.module.scss';
 
-interface IButtonType{
-    text:string
+interface IButtonType {
+  text: string;
+  type: 'button' | 'submit';
 }
-
-const Button:FC<IButtonType> = ({text}) =>{
-    return(
-        <button className={styles.btn}>{text}</button>
-    );
-}
-
-export default Button
+/* eslint-disable react/button-has-type */
+const Button: FC<IButtonType> = ({ text, type }: IButtonType) => {
+  return (
+    <button type={type} className={styles.btn}>
+      {text}
+    </button>
+  );
+};
+/* eslint-enable react/button-has-type */
+export default Button;
