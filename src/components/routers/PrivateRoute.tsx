@@ -12,7 +12,7 @@ const PrivateRoute: FC<IProps & RouteProps> = ({component: Component, path, ...r
 
   return (
     <Route {...rest} render={(props) => (
-      false? <Component {...props} /> : <Redirect to='/login' />
+      true? <Component {...props} /> : <Redirect to='/login' />
     )}/>
   );
 }

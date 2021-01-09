@@ -1,6 +1,7 @@
 import classes from '*.module.css';
 import React, {useState} from 'react';
 import {useModal} from './useModal';
+import './index.scss';
 
 export const NewItemModal = () => {
 
