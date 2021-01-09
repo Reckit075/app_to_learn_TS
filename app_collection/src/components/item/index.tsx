@@ -7,7 +7,7 @@ interface IItemType {
   description: string;
 }
 
-const Item: FC<IItemType> = ({title, author, description}) =>{
+const Item: FC<IItemType> = ({title, author, description}) => {
   
   return (
       <div className={classes.item}>
