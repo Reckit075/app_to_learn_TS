@@ -1,33 +1,64 @@
 import React, { FC } from 'react';
-import { useModal } from './useModal';
+// import { useModal } from './useModal';
+import { useForm } from 'react-hook-form';
+import validators from './validators';
 import styles from './index.module.scss';
+import Button from '../button';
 
-const NewItemModal: FC = () => {
-  const { form, handleFormChange, handleSubmit } = useModal();
+interface INewItemModal {
+ onClick: React.MouseEventHandler<HTMLDivElement>;
+}
 
-  return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="title">
-          Title <input value={form.title} onChange={handleFormChange} name="title" id="title" />
-        </label>
+const NewItemModal: FC<INewItemModal> = ({ onClick }: INewItemModal) => {
+ const { titleValidator, authorValidator, descriptionValidator } = validators;
 
-        <label htmlFor="author">
-          Author <input value={form.author} onChange={handleFormChange} name="author" id="author" />
-        </label>
+ type NewItem = {
+  title: string;
+  author: string;
+  description: string;
+ };
 
-        <label htmlFor="description">
-          Description <input value={form.description} onChange={handleFormChange} name="description" id="description" />
-        </label>
+ const { register, handleSubmit, errors } = useForm<NewItem>();
 
-        <button type="submit">Dodaj</button>
-      </form>
+ const submitHandler = handleSubmit((data) => {
+  console.log(data);
+  // axios call or state change
+ });
 
-      <p>{form.title}</p>
-      <p>{form.author}</p>
-      <p>{form.description}</p>
-    </>
-  );
+ const handleModalClose = (e: React.MouseEvent<HTMLDivElement>) => {
+  return e.target === e.currentTarget ? onClick(e) : null;
+ };
+
+ return (
+  // eslint-disable-next-line jsx-a11y/click-events-have-key-events
+  <div id="modalBG" tabIndex={0} role="button" onClick={handleModalClose} className={styles.modalContainer}>
+   <form className={styles.modalForm} onSubmit={submitHandler}>
+    <h2>Nowy przedmiot</h2>
+    <div className={styles.inputsContainer}>
+     <div className={styles.formField}>
+      <label htmlFor="title">
+       <input placeholder="Tytuł" className={styles.input} name="title" id="title" ref={register(titleValidator)} />
+      </label>
+      <div className={styles.error}>{errors.title && `${errors.title.message}`}</div>
+     </div>
+     <div className={styles.formField}>
+      <label htmlFor="author">
+       <input placeholder="Autor" className={styles.input} name="author" id="author" ref={register(authorValidator)} />
+      </label>
+      <div className={styles.error}>{errors.author && `${errors.author.message}`}</div>
+     </div>
+     <div className={styles.formField}>
+      <label htmlFor="description">
+       <textarea placeholder="Opis" className={`${styles.input} ${styles.textarea}`} name="description" id="description" ref={register(descriptionValidator)} />
+      </label>
+      <div className={styles.error}>{errors.description && `${errors.description.message}`}</div>
+     </div>
+    </div>
+
+    <Button type="submit" text="dodaj" className={styles.button} />
+   </form>
+  </div>
+ );
 };
 
 export default NewItemModal;

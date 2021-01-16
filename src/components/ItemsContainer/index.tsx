@@ -1,31 +1,51 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import styles from './index.module.scss';
 import Item from '../item';
 import Button from '../button';
+import NewItemModal from '../newItemModal';
 
 interface IItemsContainerType {
-  collectionTitle: string;
+ collectionTitle: string;
 }
 
 const ItemsContainer: FC<IItemsContainerType> = ({ collectionTitle }: IItemsContainerType) => {
-  return (
-    <div>
-      <h1 className={styles.title}>
-        Kolekcja:<span>{collectionTitle}</span>
-      </h1>
-      <Item
-        title="Królestwo"
-        author="Jo Nasebo"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tristique justo, vel commodo lorem interdum. Tortor dui eu laoreet tortor in pretium."
-      />
-      <Item
-        title="Królestwo"
-        author="Jo Nasebo"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tristique justo, vel commodo lorem interdum. Tortor dui eu laoreet tortor in pretium."
-      />
-      <Button type="button" text="add new Item" />
-    </div>
-  );
+ const [isModalOpen, setIsModalOpen] = useState(false);
+
+ const handleModalState = () => {
+  setIsModalOpen(!isModalOpen);
+ };
+
+ return (
+  <>
+   <div>
+    <h1 className={styles.title}>
+     Kolekcja:<span>{collectionTitle}</span>
+    </h1>
+    <Item
+     title="Królestwo"
+     author="Jo Nasebo"
+     description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tristique justo, vel commodo lorem interdum. Tortor dui eu laoreet tortor in pretium."
+    />
+    <Item
+     title="Królestwo"
+     author="Jo Nasebo"
+     description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tristique justo, vel commodo lorem interdum. Tortor dui eu laoreet tortor in pretium."
+    />
+    <Item
+     title="Królestwo"
+     author="Jo Nasebo"
+     description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tristique justo, vel commodo lorem interdum. Tortor dui eu laoreet tortor in pretium."
+    />
+    <Item
+     title="Królestwo"
+     author="Jo Nasebo"
+     description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tristique justo, vel commodo lorem interdum. Tortor dui eu laoreet tortor in pretium."
+    />
+    <Button onClick={() => setIsModalOpen(true)} type="button" text="add new Item" className={styles.button} />
+   </div>
+   {isModalOpen ? <NewItemModal onClick={handleModalState} /> : null}
+  </>
+ );
 };
 
 export default ItemsContainer;

@@ -1,18 +1,22 @@
-.itemsContainer{
-    width: 70vw;
-    height: 30vh;
-    background-color: #D1BA7E;
-    box-shadow: 5px 5px 1px 1px rgba(0, 0, 0, 0.3);
-    border-radius: 20px;
-    display: flex;
-    justify-content:space-around;
-    align-items: center;
+@import '../../var';
+
+.itemsContainer {
+ width: 70vw;
+ //  height: 30vh;
+ background-color: #d1ba7e;
+ box-shadow: 5px 5px 1px 1px rgba(0, 0, 0, 0.3);
+ display: flex;
+ justify-content: space-around;
+ align-items: center;
 }
-.title{
-    font-size: larger;
-    font-family: Raleway;
-    span{
-        font-weight: bolder;
-        color: #6B5CA5;
-    }
+
+.title {
+ margin-bottom: 48px;
+ span {
+  color: $main;
+ }
+}
+
+.button {
+ float: right;
 }
