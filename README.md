@@ -1,3 +1,36 @@
+# App-to-learn-TS
+
+It's app which let you make your own library of whatever you want. It can be collection of for example your favourite books, music, actors or so on. This app is for registered users. It lets you create your own collection of items you want to collect in one place. You can name every single collection as u want. Within one collection u can add objects with a tittle, author and description. Also by this app you are able to edit and delete collection and items in the specific collection. You can create more than one collection.
+
+## Technologies
+
+React, TypeScript
+
+## Installation
+
+
+
+## Support
+
+If u need help u can contact by: 
+
+## Roadmap
+
+
+
+## Authors and acknowledgment
+
+[Mateusz](https://github.com/Reckit075), [Rafał](https://github.com/rwedzony), Krzysztof, Patryk, Dawid, Grzegorz
+
+## License
+
+
+
+## Project status
+
+Project is done and compatible by now, but it's ready to develop.
+________________________________________
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
