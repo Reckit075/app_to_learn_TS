@@ -1,5 +1,7 @@
 import React, { FC } from "react";
 import { useForm } from "react-hook-form";
+import Button from '../button/index'
+import createUserApi from '../../API/users'
 import styles from "./index.module.scss";
 
 interface IFormInput {
@@ -7,10 +9,30 @@ interface IFormInput {
     password: String;
 }
 
-const Form: FC = () => {
-    
-    const { register, handleSubmit, errors } = useForm<IFormInput>();
-    const onSubmit = (data: IFormInput) => console.log(data);
+interface IFormType {
+    url: string,
+    type: 'register' | 'login'
+}
+
+const Form: FC<IFormType> = ({ url, type }) => {
+    function createUser(name: String, password: String, url: string): any {
+        return (
+            createUserApi<{ name: String, password: String, url: string }>(name, password, url)
+                .then(() => {
+                    alert("utworzono/zalogowano użytkownika")
+                })
+                .catch(error => {
+                    console.error(error)
+                }))
+    }
+
+    const { register, handleSubmit, errors } = useForm<IFormInput>()
+
+    const onSubmit= (data: IFormInput) => {
+        if(type === 'register') createUser(data.name, data.password, `http://localhost:3001/users/${url}`);
+        if (type === 'login')createUser(data.name, data.password, `http://localhost:3001/users/${url}`);
+    }
+     
     return (
         <form onSubmit={handleSubmit(onSubmit)} className={styles.wrapper}>
             <input
@@ -40,7 +62,7 @@ const Form: FC = () => {
                 <p className={styles.error}>Your password input required to be more than 8 and less than 30</p>
             )}
 
-            <input type="submit" className={styles.btn} />
+            <Button text={type}/>
         </form>
     );
 };

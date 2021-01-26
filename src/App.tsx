@@ -12,7 +12,7 @@ function App() {
       <div className="mainContent">
         <ItemsContainer collectionTitle='movies'/>
       </div>
-      <Form />
+      <Form type={'login'} url={'login'}/>
       <Footer/>
     </div>
   );
