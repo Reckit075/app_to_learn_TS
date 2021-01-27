@@ -1,5 +1,4 @@
 import React, {FC} from 'react'
-import PrivateRoute from './PrivateRoute'
 import Item from '../item';
 import {NewItemModal} from '../newItemModal';
 import ItemsContainer from '../ItemsContainer';
@@ -8,7 +7,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  Redirect
 } from "react-router-dom";
 
 const Routers: FC = () => {
@@ -29,10 +29,11 @@ const Routers: FC = () => {
         </ul>
         <Switch>
           {/* <Route path="/login" component={Login}/> */}
-          <PrivateRoute path="/item" component={Test} />
-          {/* <PrivateRoute path="/itemcontainer" component={ItemsContainer} /> */}
-          <PrivateRoute path="/colections" component={NewItemModal} />
+          <Route path="/item" component={Test} />
+          <Route path="/itemcontainer" component={ItemsContainer} />
+          <Route path="/colections" component={NewItemModal} />
         </Switch>
+        {!localStorage.getItem('token') && <Redirect to="/login"/>}
     </Router>
   )
 }
