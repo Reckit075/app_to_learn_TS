@@ -1,15 +1,16 @@
 import React, { FC } from 'react';
-// import { useModal } from './useModal';
 import { useForm } from 'react-hook-form';
+import axios from 'axios';
 import validators from './validators';
 import styles from './index.module.scss';
 import Button from '../button';
 
 interface INewItemModal {
  onClick: React.MouseEventHandler<HTMLDivElement>;
+ type: 'item' | 'collection';
 }
 
-const NewItemModal: FC<INewItemModal> = ({ onClick }: INewItemModal) => {
+const NewItemModal: FC<INewItemModal> = ({ onClick, type }: INewItemModal) => {
  const { titleValidator, authorValidator, descriptionValidator } = validators;
 
  type NewItem = {
@@ -20,9 +21,14 @@ const NewItemModal: FC<INewItemModal> = ({ onClick }: INewItemModal) => {
 
  const { register, handleSubmit, errors } = useForm<NewItem>();
 
+ const path = type === 'item' ? 'itemURL' : 'collectionURL';
+
  const submitHandler = handleSubmit((data) => {
-  console.log(data);
-  // axios call or state change
+  axios({
+   method: 'post',
+   url: path,
+   data,
+  });
  });
 
  const handleModalClose = (e: React.MouseEvent<HTMLDivElement>) => {

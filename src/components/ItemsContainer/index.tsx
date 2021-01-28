@@ -14,7 +14,6 @@ const ItemsContainer: FC<IItemsContainerType> = ({ collectionTitle }: IItemsCont
  const handleModalState = () => {
   setIsModalOpen(!isModalOpen);
  };
-
  return (
   <>
    <div>
@@ -43,7 +42,7 @@ const ItemsContainer: FC<IItemsContainerType> = ({ collectionTitle }: IItemsCont
     />
     <Button onClick={() => setIsModalOpen(true)} type="button" text="add new Item" className={styles.button} />
    </div>
-   {isModalOpen ? <NewItemModal onClick={handleModalState} /> : null}
+   {isModalOpen ? <NewItemModal type="item" onClick={handleModalState} /> : null}
   </>
  );
 };
