@@ -3,7 +3,7 @@
 .itemsContainer {
  width: 70vw;
  //  height: 30vh;
- background-color: #d1ba7e;
+ background-color: $white;
  box-shadow: 5px 5px 1px 1px rgba(0, 0, 0, 0.3);
  display: flex;
  justify-content: space-around;
@@ -18,5 +18,5 @@
 }
 
 .button {
- float: right;
+ 
 }

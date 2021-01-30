@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
+import Button from 'shared/button';
 import validators from './validators';
 import styles from './index.module.scss';
-import Button from '../button';
 
 interface INewItemModal {
  onClick: React.MouseEventHandler<HTMLDivElement>;
