@@ -5,7 +5,9 @@ import ItemsContainer from './components/ItemsContainer/';
 import Footer from './components/footer'
 import Form from './components/form'
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 function App() {
+
   return (
     <div className="App">
       <Header/>
