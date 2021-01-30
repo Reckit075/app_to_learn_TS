@@ -1,25 +1,34 @@
 import React, { FC } from "react";
 import { useForm } from "react-hook-form";
 import Button from '../button/index'
-import createUserApi from '../../API/users'
+import {createUserApi,loginUserApi} from '../../API/users'
 import styles from "./index.module.scss";
 
 interface IFormInput {
-    name: String;
-    password: String;
+    name: string;
+    password: string;
 }
 
 interface IFormType {
-    url: string,
     type: 'register' | 'login'
 }
 
-const Form: FC<IFormType> = ({ url, type }) => {
-    function createUser(name: String, password: String, url: string): any {
+const Form: FC<IFormType> = ({ type }) => {
+    function createUser(name: string, password: string): any {
         return (
-            createUserApi<{ name: String, password: String, url: string }>(name, password, url)
+            createUserApi(name, password)
                 .then(() => {
-                    alert("utworzono/zalogowano użytkownika")
+                    alert("utworzono użytkownika")
+                })
+                .catch(error => {
+                    console.error(error)
+                }))
+    }
+    function loginUser(name: string, password: string): any {
+        return (
+            loginUserApi(name, password)
+                .then(() => {
+                    alert("zalogowano użytkownika")
                 })
                 .catch(error => {
                     console.error(error)
@@ -29,8 +38,8 @@ const Form: FC<IFormType> = ({ url, type }) => {
     const { register, handleSubmit, errors } = useForm<IFormInput>()
 
     const onSubmit= (data: IFormInput) => {
-        if(type === 'register') createUser(data.name, data.password, `http://localhost:3001/users/${url}`);
-        if (type === 'login')createUser(data.name, data.password, `http://localhost:3001/users/${url}`);
+        if(type === 'register') createUser(data.name, data.password);
+        if (type === 'login')loginUser(data.name, data.password);
     }
      
     return (
