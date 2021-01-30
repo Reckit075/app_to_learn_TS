@@ -3,6 +3,7 @@ import './index.scss';
 import Header from './components/header';
 import ItemsContainer from './components/ItemsContainer/';
 import Footer from './components/footer'
+import Form from './components/form'
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <div className="mainContent">
         <ItemsContainer collectionTitle='movies'/>
       </div>
+      <Form type={'login'} />
       <Footer/>
     </div>
   );
