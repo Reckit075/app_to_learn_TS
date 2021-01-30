@@ -49,7 +49,7 @@ const Form: FC<IFormType> = ({ type }) => {
                 name="name"
                 placeholder="name"
                 ref={register({
-                    required: "PASSWORD REQUIRED",
+                    required: "NAME REQUIRED",
                     minLength: 8,
                     maxLength: 30,
                 })}
