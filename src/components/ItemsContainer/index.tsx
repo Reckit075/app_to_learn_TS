@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react';
+import Button from 'shared/button';
+import Item from './item';
 import styles from './index.module.scss';
-import Item from '../item';
-import Button from '../button';
 import NewItemModal from '../newItemModal';
 
 interface IItemsContainerType {
