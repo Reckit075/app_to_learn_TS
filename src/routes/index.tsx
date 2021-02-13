@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import { Collection } from 'pages/Collection/Colletion';
 import { Collections } from 'pages/Collections';
@@ -7,8 +7,6 @@ import { Register } from 'pages/Register';
 import Home from 'pages/Home/Home';
 
 export const AuthRouter: FC = () => {
- const token = localStorage.getItem('token');
- console.log('wykonuje ###');
  return (
   <BrowserRouter>
    <Switch>
@@ -21,8 +19,6 @@ export const AuthRouter: FC = () => {
 };
 
 export const UnauthRouter: FC = () => {
- const token = localStorage.getItem('token');
- console.log('NIE WYKONUJE SIE');
  return (
   <BrowserRouter>
    <Switch>

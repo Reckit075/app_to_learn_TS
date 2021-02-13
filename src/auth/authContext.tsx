@@ -6,8 +6,8 @@ interface IMessage {
  message?: string;
 }
 
-interface IAuthContext {
- user?: string;
+export interface IAuthContext {
+ user?: string | null;
  status?: 'pending' | 'success' | 'error' | any;
  error?: IMessage;
 }
@@ -21,23 +21,17 @@ export const AuthContext = createContext<IAuthContext>({});
 const AuthProvider: FC<IProps> = ({ children }: IProps) => {
  const [state, setState] = useState<IAuthContext>({
   user: undefined,
-  status: 'error',
+  status: 'pending',
   error: undefined,
  });
 
  useEffect(() => {
-  // ---> loguje - pobiera token -> po 2h -> token wygasa -> ja odświeżam strone -> zostaje na /collections (tylko ze jest puste)
-  // check token
-  console.log('wykonuje się authcontext przypisanie user');
-  // localStorage.get('token')
-  // if (localStorage.getItem('token')) {
+  const userLocal = localStorage.getItem('token') ? localStorage.getItem('token') : null;
   setState({
-   user: 'asd',
-   status: true,
+   user: userLocal,
+   status: 'success',
    error: undefined,
   });
-  // }
-  // if token is false do:
  }, []);
 
  return (

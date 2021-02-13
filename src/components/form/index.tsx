@@ -1,8 +1,9 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Button from 'shared/button';
 import { createUserApi, loginUserApi } from 'API/users';
-import { useHistory } from 'react-router';
+import { useHistory } from 'react-router-dom';
+import { IAuthContext } from 'auth/authContext';
 import styles from './index.module.scss';
 
 interface IFormInput {
@@ -16,6 +17,11 @@ interface IFormType {
 
 const Form: FC<IFormType> = ({ type }: IFormType) => {
  const history = useHistory();
+ const [state, setState] = useState<IAuthContext>({
+  user: undefined,
+  status: 'pending',
+  error: undefined,
+ });
 
  function createUser(name: string, password: string): any {
   return createUserApi(name, password)
@@ -28,14 +34,18 @@ const Form: FC<IFormType> = ({ type }: IFormType) => {
  }
  function loginUser(name: string, password: string): any {
   return loginUserApi(name, password)
-   .then(() => {
-    alert('zalogowano użytkownika');
-    localStorage.setItem('token', 'costutajjest');
-    history.push('/collections');
+   .then((res: any) => {
+    if (res?.name) {
+     localStorage.setItem('token', name);
+     setState({
+      user: name,
+      status: 'success',
+      error: undefined,
+     });
+     window.location.reload();
+    }
    })
    .catch((error) => {
-    // localStorage.setItem('token', 'token');
-    // history.push('/collections');
     console.error(error);
    });
  }
