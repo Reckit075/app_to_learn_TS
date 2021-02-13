@@ -1,5 +1,5 @@
 export function createUserApi(name: string, password: string): Promise<void> {
- return fetch('http://localhost:3001/users/register', {
+ return fetch('https://app-to-learn-ts.herokuapp.com/users/register', {
   method: 'POST',
   headers: {
    'Content-Type': 'application/json',
@@ -16,7 +16,7 @@ export function createUserApi(name: string, password: string): Promise<void> {
  });
 }
 export function loginUserApi(name: string, password: string): Promise<void> {
- return fetch('http://localhost:3001/users/login', {
+ return fetch('https://app-to-learn-ts.herokuapp.com/users/login', {
   method: 'POST',
   headers: {
    'Content-Type': 'application/json',

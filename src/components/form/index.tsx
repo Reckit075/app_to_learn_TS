@@ -30,10 +30,12 @@ const Form: FC<IFormType> = ({ type }: IFormType) => {
   return loginUserApi(name, password)
    .then(() => {
     alert('zalogowano użytkownika');
+    localStorage.setItem('token', 'costutajjest');
+    history.push('/collections');
    })
    .catch((error) => {
-    localStorage.setItem('token', 'token');
-    history.push('/collections');
+    // localStorage.setItem('token', 'token');
+    // history.push('/collections');
     console.error(error);
    });
  }
